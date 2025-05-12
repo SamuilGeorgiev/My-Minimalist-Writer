@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import ComposeTweet from './components/ComposeTweet.jsx';
+import Feed from './components/Feed.jsx';
+import logo from './assets/logo.svg';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [posts, setPosts] = useState([]);
+
+  const addPost = (content) => {
+    const newPost = { id: Date.now(), content, timestamp: Date.now() };
+    setPosts([newPost, ...posts]); // Add new post to the top
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="min-h-screen bg-gray-100">
+      <header className="bg-white shadow-sm">
+        <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center">
+            <img
+              src={logo}
+              alt="Minimalist Writer Quill Logo"
+              className="h-10 w-auto mr-3"
+            />
+            <h1 className="text-2xl font-semibold text-gray-800">My Minimalist Writer</h1>
+          </div>
+          <nav className="space-x-4">
+            <a href="#" className="text-blue-500 hover:text-blue-600 font-medium">
+              Home
+            </a>
+            <a href="#" className="text-blue-500 hover:text-blue-600 font-medium">
+              Profile
+            </a>
+          </nav>
+        </div>
+      </header>
+      <main className="max-w-3xl mx-auto px-4 py-6">
+        <div className="mb-6">
+          <ComposeTweet onPostSubmit={addPost} />
+        </div>
+        <div>
+          <Feed posts={posts} />
+        </div>
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
