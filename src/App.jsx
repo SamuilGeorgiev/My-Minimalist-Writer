@@ -27,8 +27,9 @@ function App() {
         <header className="bg-white shadow-sm">
           <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
             <div className="flex items-center">
-              <img src={logo} alt="Minimalist Writer Quill Logo" className="h-10 w-auto mr-3" />
+              <img src={logo} alt="Minimalist Writer Quill Logo" className="h-19 w-auto mr-66" />
               <h1 className="text-2xl font-semibold text-gray-800">My Minimalist Writer</h1>
+              <h1 className="text-22x1">12345</h1>
             </div>
             <div className="flex items-center space-x-4">
               <nav className="space-x-4">
