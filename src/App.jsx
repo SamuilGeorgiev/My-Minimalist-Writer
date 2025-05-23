@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
 import ComposeTweet from './components/ComposeTweet.jsx';
 import Feed from './components/Feed.jsx';
-import Auth from './components/Auth.jsx';
 import Profile from './components/Profile.jsx';
+
+import Auth from './components/Auth.jsx';
+
 import logo from './assets/logo.svg';
 
 function App() {
@@ -23,13 +25,12 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-100">
-        <header className="bg-white shadow-sm">
-          <div className="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-            <div className="flex items-center">
-              <img src={logo} alt="Minimalist Writer Quill Logo" className="h-19 w-auto mr-66" />
-              <h1 className="text-2xl font-semibold text-gray-800">My Minimalist Writer</h1>
-              <h1 className="text-22x1">12345</h1>
+      <div className="main1">
+        <header className="">
+          <div className="">
+            <div >
+              <img   src={logo} alt="Minimalist Writer Logo" className="logo" />
+              <h1 className="">My Minimalist Writer</h1>
             </div>
             <div className="flex items-center space-x-4">
               <nav className="space-x-4">
