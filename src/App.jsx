@@ -1,26 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Toaster, toast } from 'react-hot-toast';
+import { collection, addDoc, onSnapshot, query, orderBy } from 'firebase/firestore';
+import { db } from './firebase'; // Import Firestore instance
 import ComposeTweet from './components/ComposeTweet.jsx';
 import Feed from './components/Feed.jsx';
 import Profile from './components/Profile.jsx';
-
 import Auth from './components/Auth.jsx';
-
 import logo from './assets/logo.svg';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState(null);
 
-  const addPost = async (content) => {
+  // Fetch posts in real-time
+  useEffect(() => {
     if (!user) return;
-    await addDoc(collection(db, 'posts'), {
-      content,
-      timestamp: Date.now(),
-      userId: user.uid,
+    const q = query(collection(db, 'posts'), orderBy('timestamp', 'desc'));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedPosts = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setPosts(fetchedPosts);
+    }, (error) => {
+      console.error('Error fetching posts:', error);
+      toast.error('Failed to load posts.');
     });
-    toast.success('Post submitted!');
+    return () => unsubscribe();
+  }, [user]);
+
+  const addPost = async (content) => {
+    if (!user) {
+      toast.error('Please log in to post.');
+      return;
+    }
+    try {
+      await addDoc(collection(db, 'posts'), {
+        content,
+        timestamp: Date.now(),
+        userId: user.uid,
+      });
+      toast.success('Post submitted!');
+    } catch (error) {
+      console.error('Error adding post:', error);
+      toast.error('Failed to submit post.');
+    }
   };
 
   return (
@@ -28,8 +53,8 @@ function App() {
       <div className="main1">
         <header className="">
           <div className="">
-            <div >
-              <img   src={logo} alt="Minimalist Writer Logo" className="logo" />
+            <div>
+              <img src={logo} alt="Minimalist Writer Logo" className="logo" />
               <h1 className="">My Minimalist Writer</h1>
             </div>
             <div className="flex items-center space-x-4">
@@ -52,7 +77,7 @@ function App() {
                 path="/"
                 element={
                   <>
-                    <div className="mb-6">
+                    <div>
                       <ComposeTweet onPostSubmit={addPost} />
                     </div>
                     <div>

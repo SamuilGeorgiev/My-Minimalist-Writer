@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './ComposeTweet.css';
 
 function ComposeTweet({ onPostSubmit }) {
   const [tweetText, setTweetText] = useState('');
@@ -31,31 +32,34 @@ function ComposeTweet({ onPostSubmit }) {
   };
 
   return (
-    <div className="">
-      <h2 className="">Compose New Post</h2>
+    <div className="compose-tweet">
+      <h2>Compose New Post</h2>
       <textarea
-        className=""
+        className="compose-tweet-textarea"
         value={tweetText}
         onChange={handleInputChange}
         placeholder="What's on your mind?"
         disabled={isSubmitting}
+        aria-label="Compose a new post"
       />
-      <div className="">
-        <span className={`text-sm ${tweetText.length > maxLength ? 'text-red-500' : 'text-gray-500'}`}>
+      <div className="compose-tweet-footer">
+        <span className={`char-count ${tweetText.length > maxLength ? 'text-red-500' : 'text-gray-500'}`}>
           {tweetText.length}/{maxLength}
         </span>
-        <div className="space-x-3">
+        <div className="compose-tweet-buttons">
           <button
-            className="city-50"
+            className="clear-button"
             onClick={handleClear}
             disabled={isSubmitting || !tweetText}
+            aria-label="Clear post text"
           >
             Clear
           </button>
           <button
-            
+            className="post-button"
             onClick={handleSubmit}
             disabled={isSubmitting || !tweetText.trim()}
+            aria-label="Submit post"
           >
             {isSubmitting ? 'Posting...' : 'Post'}
           </button>

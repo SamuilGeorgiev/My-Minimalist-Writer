@@ -83,7 +83,7 @@ function Auth({ setUser }) {
       />
       <input
         type="password"
-        className="px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-blue-500"
+        className="password"
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}

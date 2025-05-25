@@ -1,0 +1,225 @@
+/* Container for the ComposeTweet component */
+.compose-tweet {
+    display: flex; /* Use flexbox for better alignment of internal elements */
+    flex-direction: column; /* Stack children vertically */
+    align-items: stretch; /* Stretch children to fill the width */
+    background-color: #ffffff;
+    border: 1px solid #e0e6ed; /* Softer, more modern border */
+    border-radius: 12px; /* Slightly less rounded, modern aesthetic */
+    padding: 24px; /* More generous padding */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* More subtle, deeper shadow */
+    width: 100%;
+    max-width: 550px; /* Slightly wider max-width for more content */
+    margin: 0 auto 32px; /* Increased bottom margin */
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* Modern font stack */
+  }
+  
+  .dark-mode .compose-tweet {
+    background-color: #2c3e50; /* Darker, more sophisticated dark mode background */
+    border-color: #4a627a; /* Harmonized dark mode border */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Stronger shadow for dark mode contrast */
+  }
+  
+  /* Heading */
+  .compose-tweet h2 {
+    font-size: 1.3rem; /* Slightly larger heading */
+    font-weight: 700; /* Bolder for prominence */
+    color: #334e68; /* Deeper, more refined heading color */
+    margin: 0 0 20px; /* Adjusted bottom margin */
+    text-align: center; /* Center the heading for better presentation */
+  }
+  
+
+  .compose-tweet{
+    width: 462px;
+    
+
+  }
+  .dark-mode .compose-tweet h2 {
+    color: #ecf0f1; /* Lighter color for dark mode heading */
+  }
+  
+  /* Textarea */
+  .compose-tweet textarea {
+    width: calc(100% - 24px); /* Account for padding within the textarea */
+    min-height: 120px; /* Slightly increased min-height */
+    padding: 1px;
+    border: 2px solid #aebfd0; /* Softer, more neutral border */
+    border-radius: 8px;
+    font-size: 1rem; /* Slightly larger font size for readability */
+    line-height: 1.5; /* Improved line spacing */
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transitions */
+    background-color: #f7f9fc; /* Light background for the textarea */
+    color: #34495e; /* Readable text color */
+  }
+  
+  .dark-mode .compose-tweet textarea {
+    background-color: #3d5a71; /* Darker background for textarea in dark mode */
+    border-color: #6a8ba6; /* Harmonized dark mode border */
+    color: #e0e6ed; /* Lighter text color in dark mode */
+  }
+  
+  .compose-tweet textarea::placeholder {
+    color: #92a4b8; /* Softer placeholder color */
+    opacity: 0.8; /* Slight transparency for placeholder */
+  }
+  
+  .compose-tweet textarea:focus {
+    border-color: #1a72ff; /* Retain vibrant focus color */
+    box-shadow: 0 0 0 3px rgba(26, 114, 255, 0.25); /* Subtle glowing effect on focus */
+    background-color: #ffffff; /* White background on focus for better contrast */
+  }
+  
+  .dark-mode .compose-tweet textarea:focus {
+    background-color: #4b6a83; /* Slightly lighter dark background on focus */
+  }
+  
+  .compose-tweet textarea:disabled {
+    background-color: #eef2f6; /* Lighter disabled background */
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .dark-mode .compose-tweet textarea:disabled {
+    background-color: #324c62;
+  }
+  
+  /* Footer (character count and buttons) */
+  .compose-tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px; /* Increased top margin */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 12px; /* Space between items if they wrap */
+  }
+  
+  /* Character count */
+  .compose-tweet-footer .char-count {
+    font-size: 0.9rem; /* Slightly larger font size */
+    font-weight: 500;
+    min-width: 80px; /* Ensure space for the count */
+  }
+  
+  .compose-tweet-footer .text-gray-500 {
+    color: #7f8c8d; /* Muted, professional gray */
+  }
+  
+  .dark-mode .compose-tweet-footer .text-gray-500 {
+    color: #bdc3c7; /* Lighter gray for dark mode */
+  }
+  
+  .compose-tweet-footer .text-red-500 {
+    color: #e74c3c; /* A slightly softer, but still clear red */
+    font-weight: 600; /* Make it stand out more */
+  }
+  
+  /* Button container */
+  .compose-tweet-buttons {
+    display: flex;
+    gap: 10px; /* Slightly reduced gap between buttons */
+  }
+  
+  /* Buttons */
+  .compose-tweet button {
+    padding: 10px 20px; /* More padding for a softer button feel */
+    border: none;
+    border-radius: 25px; /* More pronounced rounded corners */
+    font-size: 0.95rem; /* Slightly larger font for buttons */
+    font-weight: 600; /* Bolder text for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Smooth transitions and subtle transform */
+    letter-spacing: 0.5px; /* Slight letter spacing for appeal */
+  }
+  
+  .compose-tweet .clear-button {
+    background-color: #e74c3c; /* Coordinated clear button color */
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2); /* Subtle shadow for clear button */
+  }
+  
+  .compose-tweet .clear-button:hover:not(:disabled) {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
+  }
+  
+  .compose-tweet .post-button {
+    background-color: #3498db; /* A more vibrant blue for the post button */
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(52, 152, 219, 0.2); /* Subtle shadow for post button */
+  }
+  
+  .compose-tweet .post-button:hover:not(:disabled) {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-1px); /* Slight lift on hover */
+  }
+  
+  .compose-tweet button:disabled {
+    background-color: #cccccc; /* Neutral disabled color */
+    color: #999999;
+    cursor: not-allowed;
+    box-shadow: none; /* No shadow when disabled */
+    transform: none; /* No transform when disabled */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) { /* Adjusted breakpoint for broader mobile devices */
+    .compose-tweet {
+      padding: 18px; /* Slightly less padding on smaller screens */
+      margin: 0 auto 24px;
+    }
+  
+    .compose-tweet h2 {
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+    }
+  
+    .compose-tweet textarea {
+      min-height: 110px; /* Adjusted min-height for smaller screens */
+      font-size: 0.95rem;
+    }
+  
+    .compose-tweet-footer {
+      flex-direction: column; /* Stack footer items vertically */
+      align-items: flex-start; /* Align items to the start */
+    }
+  
+    .compose-tweet-buttons {
+      width: 100%; /* Make buttons full width when stacked */
+      justify-content: flex-end; /* Align buttons to the right */
+      margin-top: 10px; /* Add space between char count and buttons */
+    }
+  
+    .compose-tweet button {
+      padding: 9px 18px; /* Slightly less padding for buttons */
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .compose-tweet {
+      padding: 15px;
+    }
+  
+    .compose-tweet h2 {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+  
+    .compose-tweet textarea {
+      min-height: 90px;
+    }
+  
+    .compose-tweet-buttons {
+      flex-direction: row; /* Keep buttons in a row for very small screens */
+      gap: 8px;
+      justify-content: center; /* Center buttons */
+    }
+  
+    .compose-tweet button {
+      flex: 1; /* Allow buttons to grow and fill space */
+      max-width: 120px; /* Limit individual button width */
+    }
+  }
